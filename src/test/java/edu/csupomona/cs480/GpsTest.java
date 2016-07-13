@@ -8,11 +8,11 @@ import edu.csupomona.cs480.data.GpsProduct;
 public class GpsTest {
 
 	@Test
-	public boolean testGpsTest() {
+	public void testGpsTest() {
 		GpsTest gp = new GpsTest();
 		GpsProduct product = new GpsProduct();
 		
 		// Tests to see if it is returning a String;
-		return (product.getPrice()).getClass().equals(String.class); 
+		(product.getPrice()).getClass().equals(String.class); 
 	}
 }
