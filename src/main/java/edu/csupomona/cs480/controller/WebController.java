@@ -59,7 +59,7 @@ public class WebController {
 		// You can replace this with other string,
 		// and run the application locally to check your changes
 		// with the URL: http://localhost:8080/
-		return "OK-In-CS480";
+		return "OK-In-CS480 and Testing Jenkins";
 	}
 	
 	@RequestMapping(value = "/list/all/gps", method = RequestMethod.GET)
