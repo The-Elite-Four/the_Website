@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import edu.csupomona.cs480.data.provider.FSUserManager;
 import edu.csupomona.cs480.data.provider.GpsProductManager;
@@ -13,10 +14,40 @@ import edu.csupomona.cs480.data.provider.ListYelpApiManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 import edu.csupomona.cs480.data.provider.YelpApiManager;
 
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
 @Configuration
 @EnableAutoConfiguration
-@ComponentScan
-public class App {
+@SpringBootApplication
+@EnableWebMvc
+@ComponentScan("edu.csupomona.cs480")
+public class App extends WebMvcConfigurerAdapter {
+
+
+    @Override
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("/webContent/");
+        registry.addResourceHandler("/css/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
+        registry.addResourceHandler("/img/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
+        registry.addResourceHandler("/js/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
+    }
+
+    @Override
+    public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+        configurer.enable();
+    }
+ 
+    @Bean
+    public InternalResourceViewResolver getInternalResourceViewResolver() {
+        InternalResourceViewResolver resolver = new InternalResourceViewResolver();
+        resolver.setPrefix("/webContent/");
+        resolver.setSuffix(".jsp");
+        return resolver;
+    }
 
     /**
      * This is a good example of how Spring instantiates
