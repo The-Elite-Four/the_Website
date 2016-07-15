@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.common.base.Joiner;
+
 import edu.csupomona.cs480.App;
 import edu.csupomona.cs480.data.GpsProduct;
 import edu.csupomona.cs480.data.User;
@@ -153,5 +155,18 @@ public class WebController {
 		modelAndView.addObject("users", listAllUsers());
 		return modelAndView;
 	}
+	
+
+	@RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)
+	String guava() {
+		// You can replace this with other string,
+		// and run the application locally to check your changes
+		// with the URL: http://localhost:8080/
+		Joiner join = Joiner.on(", ").skipNulls();
+		
+		
+		return join.join("Does","this", "work?");
+	}
+
 
 }
