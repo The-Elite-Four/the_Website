@@ -3,7 +3,11 @@ body
 	background-color:#c0c0c0;
 }
 
-
+#logo2
+{  /*change the size of the logo in the HTML with ID Logo2*/
+	width:100px;
+	height: 100px;
+}
 
 #header
 {
