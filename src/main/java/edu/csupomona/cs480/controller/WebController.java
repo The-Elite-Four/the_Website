@@ -1,8 +1,10 @@
 package edu.csupomona.cs480.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +19,7 @@ import edu.csupomona.cs480.data.GpsProduct;
 import edu.csupomona.cs480.data.User;
 import edu.csupomona.cs480.data.YelpResult;
 import edu.csupomona.cs480.data.provider.GpsProductManager;
+import edu.csupomona.cs480.data.provider.ListYelpApiManager;
 import edu.csupomona.cs480.data.provider.UserManager;
 import edu.csupomona.cs480.data.provider.YelpApiManager;
 
@@ -73,6 +76,27 @@ public class WebController {
 	@RequestMapping(value = "/cs480/testapi", method = RequestMethod.GET)
 	List<YelpResult> listYelpResults() {		
 		return yelpApiManager.listYelpResults();
+	}
+	
+	@RequestMapping(value = "/formattedResults", method = RequestMethod.GET)
+	String[] listFormattedYelpResults() {	
+		ListYelpApiManager results = new ListYelpApiManager();
+		List<YelpResult> listYelpResults = results.listYelpResults();
+		List<String> info = new ArrayList<String>();
+		for(int i = 0; i < listYelpResults.size(); i++){
+			 info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
+					 " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + ",");
+			 
+		}
+		String []  searchResults =  new String[listYelpResults.size()];
+		
+		for(int i = 0; i < listYelpResults.size(); i++){
+			searchResults[i] = info.get(i);  
+		}
+		
+		StringUtils.splitArrayElementsIntoProperties(searchResults, ",");
+		
+		return searchResults;
 	}
 	
 	
