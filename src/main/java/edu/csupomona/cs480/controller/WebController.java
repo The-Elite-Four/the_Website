@@ -78,26 +78,26 @@ public class WebController {
 		return yelpApiManager.listYelpResults();
 	}
 	
-//	@RequestMapping(value = "/formattedResults", method = RequestMethod.GET)
-//	String[] listFormattedYelpResults() {	
-//		ListYelpApiManager results = new ListYelpApiManager();
-//		List<YelpResult> listYelpResults = results.listYelpResults();
-//		List<String> info = new ArrayList<String>();
-//		for(int i = 0; i < listYelpResults.size(); i++){
-//			 info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
-//					 " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + ",");
-//			 
-//		}
-//		String []  searchResults =  new String[listYelpResults.size()];
-//		
-//		for(int i = 0; i < listYelpResults.size(); i++){
-//			searchResults[i] = info.get(i);  
-//		}
-//		
-//		StringUtils.splitArrayElementsIntoProperties(searchResults, ",");
-//		
-//		return searchResults;
-//	}
+	@RequestMapping(value = "/cs480/formattedresults", method = RequestMethod.GET)
+	String[] listFormattedYelpResults() {	
+		ListYelpApiManager results = new ListYelpApiManager();
+		List<YelpResult> listYelpResults = results.listYelpResults();
+		List<String> info = new ArrayList<String>();
+		for(int i = 0; i < listYelpResults.size(); i++){
+			 info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
+					 " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " .");
+			 
+		}
+		String []  searchResults =  new String[listYelpResults.size()];
+		
+		for(int i = 0; i < listYelpResults.size(); i++){
+			searchResults[i] = info.get(i);  
+		}
+		
+		StringUtils.splitArrayElementsIntoProperties(searchResults, " .");
+		
+		return searchResults;
+	}
 	
 	
 	/**
