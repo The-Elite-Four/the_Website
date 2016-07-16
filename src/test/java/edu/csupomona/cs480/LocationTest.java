@@ -2,7 +2,6 @@ package edu.csupomona.cs480;
 
 import org.junit.Test;
 
-import edu.csupomona.cs480.data.GpsProduct;
 import edu.csupomona.cs480.yelpV2.Location;
 import junit.framework.Assert;
 

@@ -7,13 +7,9 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-import edu.csupomona.cs480.data.provider.FSUserManager;
-import edu.csupomona.cs480.data.provider.GpsProductManager;
-import edu.csupomona.cs480.data.provider.JsoupBasedGpsProductManager;
-import edu.csupomona.cs480.data.provider.ListYelpApiManager;
-import edu.csupomona.cs480.data.provider.UserManager;
-import edu.csupomona.cs480.data.provider.YelpApiManager;
 
+import edu.csupomona.cs480.data.provider.ListYelpApiManager;
+import edu.csupomona.cs480.data.provider.YelpApiManager;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -55,16 +51,6 @@ public class App extends WebMvcConfigurerAdapter {
      * will be used in this project, where the Autowired
      * annotation is applied.
      */
-    @Bean
-    public UserManager userManager() {
-        UserManager userManager = new FSUserManager();
-        return userManager;
-    }
-    
-    @Bean
-    public GpsProductManager gpsProductManager() {
-    		return new JsoupBasedGpsProductManager();
-    }
     
     @Bean
     public YelpApiManager yelpApiManager() {
