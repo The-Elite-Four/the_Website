@@ -21,13 +21,13 @@ body
 #text
 {  position:absolute;
 	left:20%;
-	
+	margin-top:40px;
 	width: 50%;
 }
 #search
 {  position:absolute;
-	right:30%;
-	
+	right:29%;
+	margin-top:40px;
 	/*width: 50%;*/
 }
 
