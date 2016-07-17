@@ -59,7 +59,7 @@ public class WebController {
 		List<String> info = new ArrayList<String>();
 		for(int i = 0; i < listYelpResults.size(); i++){
 			 info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
-					 " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " .");
+					 " " + listYelpResults.get(i).getCategory() + " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " .");
 			 
 		}
 		String []  searchResults =  new String[listYelpResults.size()];

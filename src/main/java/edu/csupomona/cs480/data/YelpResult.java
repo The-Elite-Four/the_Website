@@ -10,6 +10,7 @@ public class YelpResult {
 	private String phone;
 	private String rating;
 	private String url;
+	private String category;
 	
 	
 	public String getName() {
@@ -41,6 +42,12 @@ public class YelpResult {
 	}
 	public void setUrl(String url) {
 		this.url = url;
+	}
+	public String getCategory() {
+		return category;
+	}
+	public void setCategory(String category) {
+		this.category = category;
 	}
 	
 }

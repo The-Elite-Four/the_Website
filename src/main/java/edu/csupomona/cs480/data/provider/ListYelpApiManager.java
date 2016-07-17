@@ -30,6 +30,7 @@ public class ListYelpApiManager implements YelpApiManager {
 			yr.setPhone(biz.getPhone());
 			yr.setRating(biz.getRating());
 			yr.setUrl(biz.getUrl());
+			yr.setCategory(biz.getCategories().get(0).get(0));
 			
 			//Add info to arraylist
 			yelpResults.add(yr);
