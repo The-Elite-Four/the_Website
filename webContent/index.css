@@ -9,6 +9,14 @@ body
 	height: 100px;
 }
 
+#yelp
+{	position:absolute;
+	max-width:25%;
+	max-height:10%;
+	right:3%;
+	top:3%;
+}
+
 #header
 {
   background-color: white;
@@ -20,14 +28,16 @@ body
 }
 #text
 {  position:absolute;
-	left:20%;
-	margin-top:40px;
-	width: 50%;
+	left:11%;
+	margin-top:67px;
+	width:50%;
+	height:15px;
 }
 #search
 {  position:absolute;
-	right:29%;
-	margin-top:40px;
+	right:38%;
+	margin-top:67px;
+	height:21px;
 	/*width: 50%;*/
 }
 
