@@ -18,7 +18,7 @@ public class RunSearchTest {
 	public void testRunSearch(){
 		RunSearch rs = new RunSearch();
 		YelpSearchResult results = new YelpSearchResult();
-		results = rs.start();
+		results = rs.start(0);
 		Assert.assertNotNull(results);
 		
 		

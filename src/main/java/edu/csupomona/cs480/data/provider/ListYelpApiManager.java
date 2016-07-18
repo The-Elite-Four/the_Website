@@ -17,8 +17,9 @@ public class ListYelpApiManager implements YelpApiManager {
 		
 		YelpSearchResult results = new YelpSearchResult();
 		
+		for(int i = 0; i < 29; i++){
 		//Call yelp api and get the search results
-		results = RunSearch.start();
+		results = RunSearch.start(i);
 		
 		//Loop through results and get each buisness' information
 		for(Business biz : results.getBusinesses()) {
@@ -34,6 +35,7 @@ public class ListYelpApiManager implements YelpApiManager {
 			
 			//Add info to arraylist
 			yelpResults.add(yr);
+		}
 		}
 		
 		return yelpResults;

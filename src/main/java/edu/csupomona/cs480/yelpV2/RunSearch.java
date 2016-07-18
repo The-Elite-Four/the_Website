@@ -13,7 +13,7 @@ import com.google.gson.JsonSyntaxException;
 
 public class RunSearch {
 
-	public static YelpSearchResult start() {
+	public static YelpSearchResult start(int offset) {
 		 
 		//These are my keys for when I signed up to use the Yelp API
 		//Define keys, tokens and secrets
@@ -30,7 +30,7 @@ public class RunSearch {
 		String longitude = "-117.7513889";
 		
 		//Hardcoded the search to be asian restaurants
-		String food = "asian+restaurants";
+		String food = "restaurants";
 		//String category = "burgers";
 		
 		// Execute a signed call to the Yelp service.  
@@ -41,6 +41,9 @@ public class RunSearch {
 		request.addQuerystringParameter("term", food);
 		//Radius is within 5 miles of CPP, not sure how much larger you guys wanna go
 		request.addQuerystringParameter("radius_filter", "8000");
+		offset *= 20;
+		String offString = String.valueOf(offset);
+		request.addQuerystringParameter("offset", offString);
 		//Limit is set to 20 max but we can iterate through all the results in chunks of 20
 	//	request.addQuerystringParameter("limit", "21");
 	//	request.addQuerystringParameter("term", "mexican+restaurants");
