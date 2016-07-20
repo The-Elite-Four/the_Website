@@ -23,13 +23,17 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("edu.csupomona.cs480")
 public class App extends WebMvcConfigurerAdapter {
 
+    private static final String[] RESOURCE_LOCATIONS = {"classpath:/static/", "classpath:/webContent/"};
 
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
-        registry.addResourceHandler("/static/**").addResourceLocations("/static/");
+       /* registry.addResourceHandler("/static/**").addResourceLocations("/static/");
         registry.addResourceHandler("/css/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
         registry.addResourceHandler("/img/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
-        registry.addResourceHandler("/js/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
+        registry.addResourceHandler("/js/**").addResourceLocations("/webContent/").setCachePeriod(31556926);*/
+        if(!registry.hasMappingForPattern("/**")) {
+            registry.addResourceHandler("/**").addResourceLocations(RESOURCE_LOCATIONS);
+        }
     }
 
     @Override
