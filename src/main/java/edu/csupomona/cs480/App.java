@@ -22,7 +22,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @SpringBootApplication
 //@EnableWebMvc
 @ComponentScan("edu.csupomona.cs480")
-public class App extends WebMvcConfigurerAdapter {
+public class App {
 
     private static final String[] RESOURCE_LOCATIONS = {"classpath:/static/**"};
 
@@ -50,9 +50,14 @@ public class App extends WebMvcConfigurerAdapter {
         return resolver;
     }*/
 
-    @Override
-    public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/").setViewName("forward:/static/index.html");
+    public WebMvcConfigurerAdapter forwardToIndex() {
+        return new WebMvcConfigurerAdapter() {
+            @Override
+            public void addViewControllers(ViewControllerRegistry registry) {
+                registry.addViewController("/home").setViewName("redirect:/static/index.html");
+                registry.addViewController("/").setViewName("redirect:/webContent/index.html");
+            }
+        };
     }
 
     /**
