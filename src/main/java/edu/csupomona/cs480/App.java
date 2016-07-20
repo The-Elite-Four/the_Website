@@ -12,6 +12,7 @@ import edu.csupomona.cs480.data.provider.ListYelpApiManager;
 import edu.csupomona.cs480.data.provider.YelpApiManager;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
@@ -19,19 +20,19 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @Configuration
 @EnableAutoConfiguration
 @SpringBootApplication
-@EnableWebMvc
+//@EnableWebMvc
 @ComponentScan("edu.csupomona.cs480")
 public class App extends WebMvcConfigurerAdapter {
 
-    private static final String[] RESOURCE_LOCATIONS = {"classpath:/static/", "classpath:/webContent/"};
+    private static final String[] RESOURCE_LOCATIONS = {"classpath:/static/**"};
 
-    @Override
+   /* @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
        /* registry.addResourceHandler("/static/**").addResourceLocations("/static/");
         registry.addResourceHandler("/css/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
         registry.addResourceHandler("/img/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
-        registry.addResourceHandler("/js/**").addResourceLocations("/webContent/").setCachePeriod(31556926);*/
-        if(!registry.hasMappingForPattern("/**")) {
+        registry.addResourceHandler("/js/**").addResourceLocations("/webContent/").setCachePeriod(31556926);
+        if(!registry.hasMappingForPattern("/static/**")) {
             registry.addResourceHandler("/**").addResourceLocations(RESOURCE_LOCATIONS);
         }
     }
@@ -47,6 +48,11 @@ public class App extends WebMvcConfigurerAdapter {
         resolver.setPrefix("/webContent/");
         resolver.setSuffix(".jsp");
         return resolver;
+    }*/
+
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("forward:/static/index.html");
     }
 
     /**

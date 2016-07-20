@@ -45,7 +45,7 @@ public class WebController {
 		
 		return "OK-In-CS480 and Testing Jenkins";
 	}
-	
+
 	//Test method for Yelp API displays first 20 search results
 	@RequestMapping(value = "/cs480/testapi", method = RequestMethod.GET)
 	List<YelpResult> listYelpResults() {		
