@@ -24,7 +24,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 @ComponentScan("edu.csupomona.cs480")
 public class App {
 
-    private static final String[] RESOURCE_LOCATIONS = {"classpath:/static/**"};
+  //  private static final String[] RESOURCE_LOCATIONS = {"classpath:/static/**"};
 
    /* @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
