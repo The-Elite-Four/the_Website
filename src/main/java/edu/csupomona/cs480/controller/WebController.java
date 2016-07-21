@@ -109,7 +109,7 @@ public class WebController {
 	//Gonna copy paste the above method a handful of times:
 
 	@RequestMapping(value = "/cs480/Breakfast", method = RequestMethod.GET)
-	String[] listFormattedYelpResultsBreakfast() {
+	File listFormattedYelpResultsBreakfast() {
 		//NEARLY identical to formatted results method
 		ListYelpApiManager results = new ListYelpApiManager();
 		List<YelpResult> listYelpResults = results.listYelpResults();
