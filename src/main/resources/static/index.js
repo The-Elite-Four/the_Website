@@ -11,6 +11,12 @@ function search() {
 		//SOME ADDRESSES ARE SUPER WORTHLESS
 	} else if(text == "BREAKFAST") {
 		//passIn = "/cs480/Breakfast";
+		//LOAD FROM Breakfast.txt and display contents to html,
+		//contnet is sorted as follows:
+		//NAME
+		//Address
+		//phone
+		//SOME ADDRESSES ARE SUPER WORTHLESS
 	} else if(text == "MEXICAN") {
 		//passIn = "/cs480/Mexican";
 	}

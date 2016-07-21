@@ -96,8 +96,6 @@ public class WebController {
 					bw.write(listYelpResults.get(i).getAddress() + "\n");
 					bw.write(listYelpResults.get(i).getPhone() + "\n");
 					bw.write("\n");
-				 	//info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
-					//	 " " + listYelpResults.get(i).getCategory() + " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " ."); 
 				}
 			}
 			bw.close();
@@ -105,12 +103,6 @@ public class WebController {
 		} catch(IOException e) {
 			//Well shoot...
 		}
-		/*String []  searchResults =  new String[info.size()];
-		for(int i = 0; i < info.size(); i++){
-			searchResults[i] = info.get(i);  
-		}
-		StringUtils.splitArrayElementsIntoProperties(searchResults, " .");
-		return searchResults;*/
 		return file;
 	}
 
@@ -122,20 +114,26 @@ public class WebController {
 		ListYelpApiManager results = new ListYelpApiManager();
 		List<YelpResult> listYelpResults = results.listYelpResults();
 		List<String> info = new ArrayList<String>();
+		File file = null;
+		try {
+			file = new File("Breakfast.txt");
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
-		//Will only parse information if it contains the correct category.
-		for(int i = 0; i < listYelpResults.size(); i++){
-			if(listYelpResults.get(i).containsCat("Breakfast")) {
-			 	info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
-					 " " + listYelpResults.get(i).getCategory() + " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " ."); 
+			//Will only parse information if it contains the correct category.
+			for(int i = 0; i < listYelpResults.size(); i++){
+				if(listYelpResults.get(i).containsCat("Breakfast")) {
+					bw.write(listYelpResults.get(i).getName() + "\n");
+					bw.write(listYelpResults.get(i).getAddress() + "\n");
+					bw.write(listYelpResults.get(i).getPhone() + "\n");
+					bw.write("\n");
+				}
 			}
+			bw.close();
+			return file;
+		} catch(IOException e) {
+			//Well shoot...
 		}
-		String []  searchResults =  new String[info.size()];
-		for(int i = 0; i < info.size(); i++){
-			searchResults[i] = info.get(i);  
-		}
-		StringUtils.splitArrayElementsIntoProperties(searchResults, " .");
-		return searchResults;
+		return file;
 	}
 
 	//{@Author Kevsbud}: I wrote this to return asian food specifically if it was written
