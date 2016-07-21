@@ -72,6 +72,28 @@ public class WebController {
 		
 		return searchResults;
 	}
+
+	@RequestMapping(value = "/cs480/AsianFood", method = RequestMethod.GET)
+	String[] listFormattedYelpResultsAsian() {
+		//NEARLY identical to formatted results method
+		ListYelpApiManager results = new ListYelpApiManager();
+		List<YelpResult> listYelpResults = results.listYelpResults();
+		List<String> info = new ArrayList<String>();
+
+		//Will only parse information if it contains the correct category.
+		for(int i = 0; i < listYelpResults.size(); i++){
+			if(listYelpResults.get(i).containsCat("Asian")) {
+			 	info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
+					 " " + listYelpResults.get(i).getCategory() + " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " ."); 
+			}
+		}
+		String []  searchResults =  new String[info.size()];
+		for(int i = 0; i < info.size(); i++){
+			searchResults[i] = info.get(i);  
+		}
+		StringUtils.splitArrayElementsIntoProperties(searchResults, " .");
+		return searchResults;
+	}
 	
 
 	@RequestMapping(value = "/cs480/guava", method = RequestMethod.GET)

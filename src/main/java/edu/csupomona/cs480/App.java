@@ -50,6 +50,10 @@ public class App {
         return resolver;
     }*/
 
+    public void addResourceHandlers(ResourceHandlerRegistry registry) {
+        registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
+    }
+
     public WebMvcConfigurerAdapter forwardToIndex() {
         return new WebMvcConfigurerAdapter() {
             @Override

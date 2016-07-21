@@ -49,5 +49,12 @@ public class YelpResult {
 	public void setCategory(String category) {
 		this.category = category;
 	}
+
+	public boolean containsCat(String str) {
+		if(category.contains(str)) {
+			return true;
+		}
+		return false;
+	}
 	
 }
