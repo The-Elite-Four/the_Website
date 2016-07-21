@@ -86,7 +86,7 @@ public class WebController {
 		List<String> info = new ArrayList<String>();
 		File file = null;
 		try {
-			file = new File("cs480/AsianFood.txt");
+			file = new File("AsianFood.txt");
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
 			//Will only parse information if it contains the correct category.
