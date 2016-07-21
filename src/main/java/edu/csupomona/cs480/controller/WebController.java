@@ -73,6 +73,8 @@ public class WebController {
 		return searchResults;
 	}
 
+	//{@Author Kevsbud}: I wrote this to return asian food specifically if it was written
+	//into the search bar. Also uses my containsCat(String str) method in YelpResult.java
 	@RequestMapping(value = "/cs480/AsianFood", method = RequestMethod.GET)
 	String[] listFormattedYelpResultsAsian() {
 		//NEARLY identical to formatted results method
