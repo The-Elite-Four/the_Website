@@ -14,12 +14,11 @@ body
 	max-width:30%;
 	max-height:14%;
 	right:1%;
-	top:2%;
+	top:0%;
 }
 
 #header
-{
-  background-color: white;
+{	background-color: white;
 	position:static;
 	left: 0px;
 	top:0px;
