@@ -86,7 +86,7 @@ public class WebController {
 		List<String> info = new ArrayList<String>();
 		File file = null;
 		try {
-			file = new File("AsianFood.txt");
+			file = new File("/cs480/AsianFood.txt");
 			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
 			//Will only parse information if it contains the correct category.
@@ -95,6 +95,7 @@ public class WebController {
 					bw.write(listYelpResults.get(i).getName() + "\n");
 					bw.write(listYelpResults.get(i).getAddress() + "\n");
 					bw.write(listYelpResults.get(i).getPhone() + "\n");
+					bw.write("\n");
 				 	//info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
 					//	 " " + listYelpResults.get(i).getCategory() + " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " ."); 
 				}
