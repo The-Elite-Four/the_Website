@@ -9,6 +9,9 @@ function search() {
 		//Address
 		//phone
 		//SOME ADDRESSES ARE SUPER WORTHLESS
+
+		//ALSO: the if(text == "Asian") line should also have an || text == "Vietnamese"
+		//the point is that it also pulls other asian foods like korean, japanese, sushi, etc.
 	} else if(text == "BREAKFAST") {
 		//passIn = "/cs480/Breakfast";
 		//LOAD FROM Breakfast.txt and display contents to html,
