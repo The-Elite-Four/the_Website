@@ -1,8 +1,12 @@
 function search() {
-	var text = document.getElementById('text').value;
+	var text = document.getElementById('text').value.toUpperCase();
 	var passIn = "/cs480/formattedResults" //This should ideally return a 404 or some error and NOT this.
-	if(text == "Asian") { //If text captured from search box is "Asian", execute. Should be a contains "Asian" though
-		passIn = "AsianFood";
+	if(text == "ASIAN") { //If text captured from search box is "Asian", execute. Should be a contains "Asian" though
+		passIn = "/cs480/AsianFood";
+	} else if(text == "BREAKFAST") {
+		passIn = "/cs480/Breakfast";
+	} else if(text == "MEXICAN") {
+		passIn = "/cs480/Mexican";
 	}
 	var xhttp = new XMLHttpRequest();
 	xhttp.onreadystateChange = function() {
@@ -12,7 +16,7 @@ function search() {
 	};
 	xhttp.open("GET", passIn, true);
 	xhttp.send();
-	alert(passIn);
+	alert(passIn); //THIS IS HERE PURELY TO ENSURE MY passIn IS INITIALLIZED PROPERLY, DO NOT LEAVE IN FINAL BUILD
 }
 
 function a()
