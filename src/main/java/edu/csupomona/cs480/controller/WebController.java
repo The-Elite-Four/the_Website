@@ -139,25 +139,31 @@ public class WebController {
 	//{@Author Kevsbud}: I wrote this to return asian food specifically if it was written
 	//into the search bar. Also uses my containsCat(String str) method in YelpResult.java
 	@RequestMapping(value = "/cs480/Mexican", method = RequestMethod.GET)
-	String[] listFormattedYelpResultsMexican() {
+	File listFormattedYelpResultsMexican() {
 		//NEARLY identical to formatted results method
 		ListYelpApiManager results = new ListYelpApiManager();
 		List<YelpResult> listYelpResults = results.listYelpResults();
 		List<String> info = new ArrayList<String>();
+		File file = null;
+		try {
+			file = new File("Mexican.txt");
+			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
-		//Will only parse information if it contains the correct category.
-		for(int i = 0; i < listYelpResults.size(); i++){
-			if(listYelpResults.get(i).containsCat("Mexican")) {
-			 	info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() +
-					 " " + listYelpResults.get(i).getCategory() + " " + listYelpResults.get(i).getRating() + " " + listYelpResults.get(i).getUrl() + " ."); 
+			//Will only parse information if it contains the correct category.
+			for(int i = 0; i < listYelpResults.size(); i++){
+				if(listYelpResults.get(i).containsCat("Mexican")) {
+					bw.write(listYelpResults.get(i).getName() + "\n");
+					bw.write(listYelpResults.get(i).getAddress() + "\n");
+					bw.write(listYelpResults.get(i).getPhone() + "\n");
+					bw.write("\n");
+				}
 			}
+			bw.close();
+			return file;
+		} catch(IOException e) {
+			//Well shoot...
 		}
-		String []  searchResults =  new String[info.size()];
-		for(int i = 0; i < info.size(); i++){
-			searchResults[i] = info.get(i);  
-		}
-		StringUtils.splitArrayElementsIntoProperties(searchResults, " .");
-		return searchResults;
+		return file;
 	}
 
 	/* My attempt at making it take any value instead of just a hard coded one.
