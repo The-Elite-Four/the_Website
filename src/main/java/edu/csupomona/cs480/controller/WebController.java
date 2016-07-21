@@ -79,92 +79,156 @@ public class WebController {
 	//{@Author Kevsbud}: I wrote this to return asian food specifically if it was written
 	//into the search bar. Also uses my containsCat(String str) method in YelpResult.java
 	@RequestMapping(value = "/cs480/AsianFood", method = RequestMethod.GET)
-	File listFormattedYelpResultsAsian() {
-		//NEARLY identical to formatted results method
+	String[] listFormattedYelpResultsAsian() {
 		ListYelpApiManager results = new ListYelpApiManager();
 		List<YelpResult> listYelpResults = results.listYelpResults();
 		List<String> info = new ArrayList<String>();
-		File file = null;
-		try {
-			file = new File("AsianFood.txt");
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
 			//Will only parse information if it contains the correct category.
 			for(int i = 0; i < listYelpResults.size(); i++){
-				if(listYelpResults.get(i).containsCat("Asian")) {
-					bw.write(listYelpResults.get(i).getName() + "\n");
-					bw.write(listYelpResults.get(i).getAddress() + "\n");
-					bw.write(listYelpResults.get(i).getPhone() + "\n");
-					bw.write("\n");
+				if(listYelpResults.get(i).containsCat("Asian") || listYelpResults.get(i).containsCat("Korean") ||
+					listYelpResults.get(i).containsCat("Vietnamese") || listYelpResults.get(i).containsCat("Thai") ||
+					listYelpResults.get(i).containsCat("Chinese") || listYelpResults.get(i).containsCat("Filipino") ||
+					listYelpResults.get(i).containsCat("Taiwanese") || listYelpResults.get(i).containsCat("Japanese") ||
+					listYelpResults.get(i).containsCat("Sushi Bars")) {
+					info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() + "  ");
 				}
 			}
-			bw.close();
-			return file;
-		} catch(IOException e) {
-			//Well shoot...
-		}
-		return file;
+			String []  searchResults =  new String[info.size()];
+			
+			for(int i = 0; i < info.size(); i++){
+				searchResults[i] = info.get(i);  
+			}
+			
+			StringUtils.splitArrayElementsIntoProperties(searchResults, "  ");
+			
+			return searchResults;
 	}
-
-	//Gonna copy paste the above method a handful of times:
-
+	
 	@RequestMapping(value = "/cs480/Breakfast", method = RequestMethod.GET)
-	File listFormattedYelpResultsBreakfast() {
-		//NEARLY identical to formatted results method
+	String[] listFormattedYelpResultsBreakfast() {
 		ListYelpApiManager results = new ListYelpApiManager();
 		List<YelpResult> listYelpResults = results.listYelpResults();
 		List<String> info = new ArrayList<String>();
-		File file = null;
-		try {
-			file = new File("Breakfast.txt");
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
 
 			//Will only parse information if it contains the correct category.
 			for(int i = 0; i < listYelpResults.size(); i++){
 				if(listYelpResults.get(i).containsCat("Breakfast")) {
-					bw.write(listYelpResults.get(i).getName() + "\n");
-					bw.write(listYelpResults.get(i).getAddress() + "\n");
-					bw.write(listYelpResults.get(i).getPhone() + "\n");
-					bw.write("\n");
+					info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() + "  ");
 				}
 			}
-			bw.close();
-			return file;
-		} catch(IOException e) {
-			//Well shoot...
-		}
-		return file;
+			String []  searchResults =  new String[info.size()];
+			
+			for(int i = 0; i < info.size(); i++){
+				searchResults[i] = info.get(i);  
+			}
+			
+			StringUtils.splitArrayElementsIntoProperties(searchResults, "  ");
+			
+			return searchResults;
 	}
 
-	//{@Author Kevsbud}: I wrote this to return asian food specifically if it was written
-	//into the search bar. Also uses my containsCat(String str) method in YelpResult.java
-	@RequestMapping(value = "/cs480/Mexican", method = RequestMethod.GET)
-	File listFormattedYelpResultsMexican() {
-		//NEARLY identical to formatted results method
+
+	@RequestMapping(value = "/cs480/AmericanFood", method = RequestMethod.GET)
+	String[] listFormattedYelpResultsAmericanFood() {
 		ListYelpApiManager results = new ListYelpApiManager();
 		List<YelpResult> listYelpResults = results.listYelpResults();
 		List<String> info = new ArrayList<String>();
-		File file = null;
-		try {
-			file = new File("Mexican.txt");
-			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+
+			//Will only parse information if it contains the correct category.
+			for(int i = 0; i < listYelpResults.size(); i++){
+				if(listYelpResults.get(i).containsCat("American") ||listYelpResults.get(i).containsCat("Burgers") ||
+					listYelpResults.get(i).containsCat("Barbeque") ||listYelpResults.get(i).containsCat("Sandwiches") ||
+					listYelpResults.get(i).containsCat("Chicken Wings")) {
+					info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() + "  ");
+				}
+			}
+			String []  searchResults =  new String[info.size()];
+			
+			for(int i = 0; i < info.size(); i++){
+				searchResults[i] = info.get(i);  
+			}
+			
+			StringUtils.splitArrayElementsIntoProperties(searchResults, "  ");
+			
+			return searchResults;
+	}
+	
+	@RequestMapping(value = "/cs480/FastFood", method = RequestMethod.GET)
+	String[] listFormattedYelpResultsFastFood() {
+		ListYelpApiManager results = new ListYelpApiManager();
+		List<YelpResult> listYelpResults = results.listYelpResults();
+		List<String> info = new ArrayList<String>();
+
+			//Will only parse information if it contains the correct category.
+			for(int i = 0; i < listYelpResults.size(); i++){
+				if(listYelpResults.get(i).containsCat("Fast Food")) {
+					info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() + "  ");
+				}
+			}
+			String []  searchResults =  new String[info.size()];
+			
+			for(int i = 0; i < info.size(); i++){
+				searchResults[i] = info.get(i);  
+			}
+			
+			StringUtils.splitArrayElementsIntoProperties(searchResults, "  ");
+			
+			return searchResults;
+	}
+	
+	@RequestMapping(value = "/cs480/MexicanFood", method = RequestMethod.GET)
+	String[] listFormattedYelpResultsMexicanFood() {
+		ListYelpApiManager results = new ListYelpApiManager();
+		List<YelpResult> listYelpResults = results.listYelpResults();
+		List<String> info = new ArrayList<String>();
 
 			//Will only parse information if it contains the correct category.
 			for(int i = 0; i < listYelpResults.size(); i++){
 				if(listYelpResults.get(i).containsCat("Mexican")) {
-					bw.write(listYelpResults.get(i).getName() + "\n");
-					bw.write(listYelpResults.get(i).getAddress() + "\n");
-					bw.write(listYelpResults.get(i).getPhone() + "\n");
-					bw.write("\n");
+					info.add(listYelpResults.get(i).getName() + " " + listYelpResults.get(i).getAddress() + " " + listYelpResults.get(i).getPhone() + "  ");
 				}
 			}
-			bw.close();
-			return file;
-		} catch(IOException e) {
-			//Well shoot...
-		}
-		return file;
+			String []  searchResults =  new String[info.size()];
+			
+			for(int i = 0; i < info.size(); i++){
+				searchResults[i] = info.get(i);  
+			}
+			
+			StringUtils.splitArrayElementsIntoProperties(searchResults, "  ");
+			
+			return searchResults;
 	}
+	
+	//{@Author Kevsbud}: I wrote this to return asian food specifically if it was written
+	//into the search bar. Also uses my containsCat(String str) method in YelpResult.java
+//	@RequestMapping(value = "/cs480/Mexican", method = RequestMethod.GET)
+//	File listFormattedYelpResultsMexican() {
+//		//NEARLY identical to formatted results method
+//		ListYelpApiManager results = new ListYelpApiManager();
+//		List<YelpResult> listYelpResults = results.listYelpResults();
+//		List<String> info = new ArrayList<String>();
+//		File file = null;
+//		try {
+//			file = new File("Mexican.txt");
+//			BufferedWriter bw = new BufferedWriter(new FileWriter(file.getAbsoluteFile()));
+//
+//			//Will only parse information if it contains the correct category.
+//			for(int i = 0; i < listYelpResults.size(); i++){
+//				if(listYelpResults.get(i).containsCat("Mexican")) {
+//					bw.write(listYelpResults.get(i).getName() + "\n");
+//					bw.write(listYelpResults.get(i).getAddress() + "\n");
+//					bw.write(listYelpResults.get(i).getPhone() + "\n");
+//					bw.write("\n");
+//				}
+//			}
+//			bw.close();
+//			return file;
+//		} catch(IOException e) {
+//			//Well shoot...
+//		}
+//		return file;
+//	}
 
 	/* My attempt at making it take any value instead of just a hard coded one.
 	@RequestMapping(value = "/cs480/Dynamic", method = RequestMethod.GET)
